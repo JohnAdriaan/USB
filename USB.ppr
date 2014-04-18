@@ -21,9 +21,11 @@ USB
 		Dell\Dell.mbr
 	-GHS
 		GHS\GHS.mbr
+		GHS\GHS.asm
 		GHS\GHS1.mbr
-		GHS\GHS2.asm
+		GHS\GHS1.asm
 		GHS\GHS2.mbr
+		GHS\GHS2.asm
 	-GlobeComm
 		GlobeComm\GlobeComm.mbr
 	-InSitu

@@ -3,7 +3,7 @@
 ??01  B80000     MOV   AX,0x0000
 ??04  8ED0       MOV   SS,AX
 ??06  BC007C     MOV   SP,0x7C00
-??09  8BF4       MOV   SI,SP
+??09  8BF4       MOV   SI,SP       ; Start of code to move
 ??0B  50         PUSH  AX
 ??0C  07         POP   ES
 ??0D  50         PUSH  AX
@@ -13,7 +13,7 @@
 ; Then, move myself out of the way
 ??10  FC         CLD
 ??11  BF0006     MOV   DI,0x0600
-??14  B90001     MOV   CX,0x0100
+??14  B90001     MOV   CX,0x0100   ; Move everything!
 ??17  F3A5       REP   MOVSW
 ??19  EA1E060000 JMP   0x0000:0x061E
 
@@ -26,7 +26,7 @@
 0626  CD18       INT   0x18
 
 ; Load first floppy sector.
-; Or, load this exact sector back over itself...
+; Or, read this exact sector back over itself...
 ; This is probably to confirm whether we're talking 0x80 or 0x00?
 0628  56         PUSH  SI
 0629  53         PUSH  BX
@@ -43,7 +43,7 @@
 ; Maybe we need 0x80?
 063C  B280       MOV   DL,0x80
 
-; Error in load!
+; Error in read!
 063E  720B       JC    0x064B
 
 ; No error. Check signature JUST before Partition tables...
@@ -91,14 +91,14 @@
 0679  BEB306     MOV   SI,0x06B3
 067C  EBDF       JMP   0x065D
 
-; The load worked. May be invalid though...
+; The read worked. May be invalid though...
 ; Pre-load "Missing operating system"
 067E  BED206     MOV   SI,0x06D2
 0681  BFFE7D     MOV   DI,0x7DFE
 0684  813D55AA   CMP   [DI],0xAA55
 0688  75D3       JNZ   0x065D ; Yep, it was an Error!
 
-; Transfer determined drive number to loaded VBR (assumes BPB!)
+; Transfer determined drive number to read VBR (assumes BPB!)
 068A  BF247C     MOV   DI,0x7C24
 068D  BEEB06     MOV   SI,0x06EB
 0690  8A04       MOV   AL,[SI]

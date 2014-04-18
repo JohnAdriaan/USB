@@ -3,7 +3,7 @@
 ??01  33C0       XOR   AX,AX
 ??03  8ED0       MOV   SS,AX
 ??05  BC007C     MOV   SP,0x7C00
-??08  8BF4       MOV   SI,SP
+??08  8BF4       MOV   SI,SP       ; Start of code to move
 ??0A  50         PUSH  AX
 ??0B  07         POP   ES
 ??0C  50         PUSH  AX
@@ -13,7 +13,7 @@
 ; Then, move myself out of the way
 ??0F  FC         CLD
 ??10  BF0006     MOV   DI,0x0600
-??13  B90001     MOV   CX,0x0100
+??13  B90001     MOV   CX,0x0100   ; Move everything!
 ??16  F2A5       REPNE MOVSW       ; This is incorrect, but it works!
 ??18  EA1D060000 JMP   0x0000:0x061D
 
@@ -32,10 +32,10 @@
 0633  CD18       INT   0x18
 
 ; Fish out Head and CylSect to use
-0635  8B14       MOV   DX,[SI]      ; Get Head, but REPLACE DL with 80h!
+0635  8B14       MOV   DX,[SI]      ; Get Head, but REPLACEs DL with 80h!
 0637  8B4C02     MOV   CX,[SI+0x02] ; Get Cylinder/Sector
-063A  8BEE       MOV   BP,SI   ; Save as boot sector
-063C  83C610     ADD   SI,+0x10     ; Keep looking
+063A  8BEE       MOV   BP,SI        ; Save found boot partition
+063C  83C610     ADD   SI,+0x10     ; Keep looking for unique entry
 063F  FECB       DEC   BL
 0641  741A       JZ    0x065D       ; Only one!
 0643  803C00     CMP   [SI],0x00    ; Only one?
@@ -59,7 +59,8 @@
 065B  EBFE       JMP   0x065B
 
 ; Load Volume Boot Record, as determined
-065D  BF0500     MOV   DI,0x0005   ; Try this many times
+065D  BF0500     MOV   DI,0x0005        ; Try this many times
+
 0660  BB007C     MOV   BX,0x7C00
 0663  B80102     MOV   AX,0x0201
 0666  57         PUSH  DI
@@ -67,17 +68,17 @@
 0669  5F         POP   DI
 066A  730C       JNC   0x0678
 
-; Error on load. Retry (although why bother on a USB stick?)
+; Error on read. Retry after reset (although why bother on a USB stick?)
 066C  33C0       XOR   AX,AX
 066E  CD13       INT   0x13
-0670  4F         DEC   DI
+0670  4F         DEC   DI               ; One less attempt
 0671  75ED       JNZ   0x0660
 
 ; "Error loading operating system"
 0673  BEA306     MOV   SI,0x06A3
 0676  EBD3       JMP   0x064B
 
-; The load worked. May be invalid though...
+; The read worked. May be invalid though...
 ; Pre-load "Missing operating system"
 0678  BEC206     MOV   SI,0x06C2
 067B  BFFE7D     MOV   DI,0x7DFE
@@ -100,4 +101,4 @@
 07DE  PartEntry  0x00, 0x00, 0x0000, 0x00, 0x00, 0x0000, 0x0000_0000, 0x0000_0000
 07EE  PartEntry  0x00, 0x00, 0x0000, 0x00, 0x00, 0x0000, 0x0000_0000, 0x0000_0000
 
-01FE  DW  0xAA55
+07FE  DW  0xAA55
