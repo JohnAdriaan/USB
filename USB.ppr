@@ -1,0 +1,48 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.HideOutput=0
+Compilator.LogType=0
+DefaultDir=C:\Users\John\Documents\GitHub\USB
+DefaultCPIndex=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+Extensions=*.*
+[Project tree]
+USB
+	-Cruzer
+		Cruzer\Cruzer Contour.mbr
+		Cruzer\Cruzer U3.iso
+		Cruzer\Cruzer U3.mbr
+	-Dell
+		Dell\Dell.mbr
+	-GHS
+		GHS\GHS.mbr
+		GHS\GHS1.mbr
+		GHS\GHS2.asm
+		GHS\GHS2.mbr
+	-GlobeComm
+		GlobeComm\GlobeComm.mbr
+	-InSitu
+		InSitu\InSitu.mbr
+	-Microsoft
+		Microsoft\Microsoft.iso
+		Microsoft\Microsoft.mbr
+	-SD-Card
+		SD-Card\SD-Card.mbr
+	-Sony NW-E005F
+		Sony NW-E005F\Sony NW-E005F.mbr
+		Sony NW-E005F\Sony NW-E005f.vbr
+	-Unknown
+		Unknown\Unknown.mbr
+	-Verbatim
+		Verbatim\Verbatim.mbr
+	-Vodafone
+		Vodafone\Vodafone.iso
+	README.md
+[Open project files]
+[Selected Project Files]
+Main=
