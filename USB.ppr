@@ -19,6 +19,7 @@ USB
 		Cruzer\Cruzer U3.mbr
 	-Dell
 		Dell\Dell.mbr
+		Dell\Dell.asm
 	-GHS
 		GHS\GHS.mbr
 		GHS\GHS.asm

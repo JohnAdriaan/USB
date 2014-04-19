@@ -82,7 +82,7 @@
 0692  EBA9         JMP    0x063D
 
 ; Everything's read and validated! Start it!
-0694  8BFC         MOV    DI,SP         ; This is beginning of fresh block
+0694  8BFC         MOV    DI,SP         ; This is beginning of VBR
 0696  1E           PUSH   DS            ; Simulate CALL address
 0697  57           PUSH   DI
 0698  8BF5         MOV    SI,BP         ; Prepare for VBR
@@ -163,7 +163,7 @@
 0715  8BF4         MOV    SI,SP         ; Disk Address Packet
 0717  CD13         INT    0x13
 
-0719  61           POPA                 ; "Repair" stack (ADD SP,16)
+0719  61           POPA                 ; "Repair" stack (ADD SP,16 without C Flag)
 
 071A  61           POPA                 ; Restore everything
 071B  730E         JNC    0x072B        ; No error?
