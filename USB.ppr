@@ -40,7 +40,8 @@ USB
 		Sony NW-E005F\Sony NW-E005F.mbr
 		Sony NW-E005F\Sony NW-E005f.vbr
 	-Unknown
-		Unknown\Unknown.mbr
+		Unknown\Unknown.vbr
+		Unknown\Unknown.asm
 	-Verbatim
 		Verbatim\Verbatim.mbr
 	-Vodafone
