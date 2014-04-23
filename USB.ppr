@@ -29,6 +29,7 @@ USB
 		GHS\GHS2.asm
 	-GlobeComm
 		GlobeComm\GlobeComm.mbr
+		GlobeComm\GlobeComm.asm
 	-InSitu
 		InSitu\InSitu.mbr
 		InSitu\InSitu.asm
@@ -37,9 +38,10 @@ USB
 		Microsoft\Microsoft.mbr
 	-SD-Card
 		SD-Card\SD-Card.mbr
+		SD-Card\SD-Card.asm
 	-Sony NW-E005F
-		Sony NW-E005F\Sony NW-E005F.mbr
-		Sony NW-E005F\Sony NW-E005f.vbr
+		Sony NW-E005F\Sony.mbr
+		Sony NW-E005F\Sony.vbr
 	-Unknown
 		Unknown\Unknown.vbr
 		Unknown\Unknown.asm
