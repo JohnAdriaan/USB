@@ -126,10 +126,6 @@
 06D6  CD13         INT    0x13
 06D8  EBB8         JMP    0x0692        ; And keep trying
 
-06DA  0000         ADD    [BX+SI],AL
-06DC  0000         ADD    [BX+SI],AL
-06DE  0000         ADD    [BX+SI],AL
-
 06E0  56           PUSH   SI            ; Save this
 06E1  33F6         XOR    SI,SI         ; Prepare Disk Address Packet (DAP)
 06E3  56           PUSH   SI            ; Sector Address 3
@@ -184,4 +180,4 @@
 07DE  PartEntry  0x00, 0x00, 0x0000, 0x00, 0x00, 0x0000, 0x0000_0000, 0x0000_0000
 07EE  PartEntry  0x00, 0x00, 0x0000, 0x00, 0x00, 0x0000, 0x0000_0000, 0x0000_0000
 
-07FD  0055AA       ADD   [DI-0x56],DL
+07FE  DW  0xAA55

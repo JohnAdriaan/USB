@@ -154,9 +154,9 @@
 0702  6A00         PUSH   +0x00         ; Sector Address 2
 0704  FF760A       PUSH   [BP+0x0A]     ; Sector Address 1
 0707  FF7608       PUSH   [BP+0x08]     ; Sector Address 0
-070A  6A00         PUSH   +0x0          ; Segment of buffer
+070A  6A00         PUSH   +0x00         ; Segment of buffer
 070C  68007C       PUSH   0x7C00        ; Offset of buffer
-070F  6A01         PUSH   +0x1          ; Only one sector
+070F  6A01         PUSH   +0x01         ; Only one sector
 0711  6A10         PUSH   +0x10         ; Size of DAP
 
 0713  B442         MOV    AH,0x42       ; Extended Disk Read
