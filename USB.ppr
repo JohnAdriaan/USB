@@ -47,6 +47,7 @@ USB
 		Unknown\Unknown.asm
 	-Verbatim
 		Verbatim\Verbatim.mbr
+		Verbatim\Verbatim.asm
 	-Vodafone
 		Vodafone\Vodafone.iso
 	README.md
