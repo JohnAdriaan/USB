@@ -35,7 +35,8 @@ USB
 		InSitu\InSitu.asm
 	-Microsoft
 		Microsoft\Microsoft.iso
-		Microsoft\Microsoft.mbr
+		Microsoft\Microsoft.vbr
+		Microsoft\Microsoft.asm
 	-SD-Card
 		SD-Card\SD-Card.mbr
 		SD-Card\SD-Card.asm
